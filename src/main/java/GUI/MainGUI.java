@@ -4,6 +4,10 @@
  */
 package GUI;
 import GUI.product.product;
+import GUI.Import.Import;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author ThinkBook
@@ -12,6 +16,7 @@ public class MainGUI extends javax.swing.JFrame {
     
     //
     product product_gui;
+    Import import_gui;
     /**
      * Creates new form MainGUI
      */
@@ -27,9 +32,35 @@ public class MainGUI extends javax.swing.JFrame {
                 product_gui.setSize(950, 650);
                 jmain.add(product_gui);
                 jmain.updateUI();
+                change_color(1);
+            } break;
+            case 2:
+            {
+                import_gui = new Import();
+                jmain.removeAll();
+                import_gui.setSize(950,650);
+                jmain.add(import_gui);
+                jmain.updateUI();
+                change_color(2);
             }
+            
     }
     }
+    private void change_color(int i){
+         product_panel.setBackground(new java.awt.Color(255, 255, 255));
+         panel_import.setBackground(new java.awt.Color(255,255,255));
+         
+         lb_product.setForeground(new java.awt.Color(0, 0, 0));
+         lb_import.setForeground(new java.awt.Color(0, 0, 0));
+         switch(i){
+             case 1:
+                    product_panel.setBackground(new java.awt.Color(0, 51, 204));
+                    lb_product.setForeground(new java.awt.Color(255, 255, 255));
+                break;
+             case 2:
+                 panel_import.setBackground(new java.awt.Color(0, 51, 204));
+                 lb_import.setForeground(new java.awt.Color(255, 255, 255));
+    }}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,10 +77,10 @@ public class MainGUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jmain = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        prd_panel = new javax.swing.JPanel();
-        lblSanpham = new javax.swing.JLabel();
-        import_panel = new javax.swing.JPanel();
-        lblSanpham1 = new javax.swing.JLabel();
+        product_panel = new javax.swing.JPanel();
+        lb_product = new javax.swing.JLabel();
+        panel_import = new javax.swing.JPanel();
+        lb_import = new javax.swing.JLabel();
         pannelSP2 = new javax.swing.JPanel();
         sell_panel = new javax.swing.JLabel();
         pannelSP3 = new javax.swing.JPanel();
@@ -93,7 +124,7 @@ public class MainGUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jmain.setBackground(new java.awt.Color(153, 255, 153));
@@ -107,61 +138,60 @@ public class MainGUI extends javax.swing.JFrame {
         );
         jmainLayout.setVerticalGroup(
             jmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 664, Short.MAX_VALUE)
+            .addGap(0, 650, Short.MAX_VALUE)
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        prd_panel.setBackground(new java.awt.Color(51, 102, 255));
-        prd_panel.addMouseListener(new java.awt.event.MouseAdapter() {
+        product_panel.setBackground(new java.awt.Color(255, 255, 255));
+        product_panel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                prd_panelMouseClicked(evt);
+                product_panelMouseClicked(evt);
             }
         });
 
-        lblSanpham.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        lblSanpham.setForeground(new java.awt.Color(255, 255, 255));
-        lblSanpham.setText("Sản phẩm");
-        lblSanpham.setPreferredSize(new java.awt.Dimension(50, 20));
+        lb_product.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        lb_product.setText("Sản phẩm");
+        lb_product.setPreferredSize(new java.awt.Dimension(50, 20));
 
-        javax.swing.GroupLayout prd_panelLayout = new javax.swing.GroupLayout(prd_panel);
-        prd_panel.setLayout(prd_panelLayout);
-        prd_panelLayout.setHorizontalGroup(
-            prd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, prd_panelLayout.createSequentialGroup()
+        javax.swing.GroupLayout product_panelLayout = new javax.swing.GroupLayout(product_panel);
+        product_panel.setLayout(product_panelLayout);
+        product_panelLayout.setHorizontalGroup(
+            product_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, product_panelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblSanpham, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lb_product, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        prd_panelLayout.setVerticalGroup(
-            prd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblSanpham, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+        product_panelLayout.setVerticalGroup(
+            product_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lb_product, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
         );
 
-        import_panel.setBackground(new java.awt.Color(255, 255, 255));
-        import_panel.addMouseListener(new java.awt.event.MouseAdapter() {
+        panel_import.setBackground(new java.awt.Color(255, 255, 255));
+        panel_import.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                import_panelMouseClicked(evt);
+                panel_importMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                import_panelMouseEntered(evt);
+                panel_importMouseEntered(evt);
             }
         });
 
-        lblSanpham1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        lblSanpham1.setText("Nhập hàng");
-        lblSanpham1.setPreferredSize(new java.awt.Dimension(50, 20));
+        lb_import.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        lb_import.setText("Nhập hàng");
+        lb_import.setPreferredSize(new java.awt.Dimension(50, 20));
 
-        javax.swing.GroupLayout import_panelLayout = new javax.swing.GroupLayout(import_panel);
-        import_panel.setLayout(import_panelLayout);
-        import_panelLayout.setHorizontalGroup(
-            import_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, import_panelLayout.createSequentialGroup()
+        javax.swing.GroupLayout panel_importLayout = new javax.swing.GroupLayout(panel_import);
+        panel_import.setLayout(panel_importLayout);
+        panel_importLayout.setHorizontalGroup(
+            panel_importLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_importLayout.createSequentialGroup()
                 .addGap(0, 52, Short.MAX_VALUE)
-                .addComponent(lblSanpham1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lb_import, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        import_panelLayout.setVerticalGroup(
-            import_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblSanpham1, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+        panel_importLayout.setVerticalGroup(
+            panel_importLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lb_import, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
         );
 
         pannelSP2.setBackground(new java.awt.Color(255, 255, 255));
@@ -188,7 +218,7 @@ public class MainGUI extends javax.swing.JFrame {
         );
         pannelSP2Layout.setVerticalGroup(
             pannelSP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sell_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+            .addComponent(sell_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
         );
 
         pannelSP3.setBackground(new java.awt.Color(255, 255, 255));
@@ -215,7 +245,7 @@ public class MainGUI extends javax.swing.JFrame {
         );
         pannelSP3Layout.setVerticalGroup(
             pannelSP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(recept_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+            .addComponent(recept_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
         );
 
         kho_panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -242,7 +272,7 @@ public class MainGUI extends javax.swing.JFrame {
         );
         kho_panelLayout.setVerticalGroup(
             kho_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblSanpham4, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+            .addComponent(lblSanpham4, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
         );
 
         static_panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -269,7 +299,7 @@ public class MainGUI extends javax.swing.JFrame {
         );
         static_panelLayout.setVerticalGroup(
             static_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblSanpham5, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+            .addComponent(lblSanpham5, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -279,8 +309,8 @@ public class MainGUI extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(prd_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(import_panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(product_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panel_import, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pannelSP2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pannelSP3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(kho_panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -291,9 +321,9 @@ public class MainGUI extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(prd_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(product_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(import_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panel_import, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(pannelSP2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -302,7 +332,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addComponent(kho_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(static_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -319,10 +349,10 @@ public class MainGUI extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jmain, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jmain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -340,18 +370,18 @@ public class MainGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void prd_panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prd_panelMouseClicked
-        //           set_color_pannel(2);
-                open_gui(1);
-    }//GEN-LAST:event_prd_panelMouseClicked
+    private void product_panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_product_panelMouseClicked
+            open_gui(1);
+    }//GEN-LAST:event_product_panelMouseClicked
 
-    private void import_panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_import_panelMouseClicked
+    private void panel_importMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_importMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_import_panelMouseClicked
+            open_gui(2);
+    }//GEN-LAST:event_panel_importMouseClicked
 
-    private void import_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_import_panelMouseEntered
+    private void panel_importMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_importMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_import_panelMouseEntered
+    }//GEN-LAST:event_panel_importMouseEntered
 
     private void pannelSP2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pannelSP2MouseClicked
         // TODO add your handling code here:
@@ -421,7 +451,6 @@ public class MainGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel import_panel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -429,13 +458,14 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jmain;
     private javax.swing.JPanel kho_panel;
-    private javax.swing.JLabel lblSanpham;
-    private javax.swing.JLabel lblSanpham1;
+    private javax.swing.JLabel lb_import;
+    private javax.swing.JLabel lb_product;
     private javax.swing.JLabel lblSanpham4;
     private javax.swing.JLabel lblSanpham5;
+    private javax.swing.JPanel panel_import;
     private javax.swing.JPanel pannelSP2;
     private javax.swing.JPanel pannelSP3;
-    private javax.swing.JPanel prd_panel;
+    private javax.swing.JPanel product_panel;
     private javax.swing.JLabel recept_panel;
     private javax.swing.JLabel sell_panel;
     private javax.swing.JPanel static_panel;

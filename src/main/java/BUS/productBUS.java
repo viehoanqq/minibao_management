@@ -15,9 +15,8 @@ import java.util.Comparator;
 public class productBUS {
 
     private ArrayList<productDTO> product_list;
-    private productDAO productDAO;
 
-    productDAO spDAO=new productDAO(); 
+    private productDAO spDAO=new productDAO(); 
     
     public productBUS(){
 
@@ -63,16 +62,24 @@ public class productBUS {
             }
         }
     }
-    public ArrayList<productDTO> descending_sort(){
+    public ArrayList<productDTO> sort(String key){
         ArrayList<productDTO> temp_list = new ArrayList<>();
         temp_list= product_list;
-        Collections.sort(temp_list,new Comparator<productDTO>(){
-            public int compare(productDTO p1, productDTO p2){
-                return Integer.compare(p1.getQuantity(),p2.getQuantity());
-            }
+        if (key.equals("ascending")){
+            Collections.sort(temp_list,new Comparator<productDTO>(){
+                public int compare(productDTO p1, productDTO p2){
+                    return Integer.compare(p1.getQuantity(),p2.getQuantity());
+                }
             
-        });
-        return temp_list;
+                });
+            return temp_list;
+        }
+        else
+        {
+            Collections.reverse(temp_list);
+            return temp_list;
+        }
+        
     }
 //    public void remove_product(productDTO i){
 //        for ()
