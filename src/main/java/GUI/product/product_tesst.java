@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI.product;
 import BUS.productBUS;
@@ -11,18 +11,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ThinkBook
  */
-public class product extends javax.swing.JPanel {
+public class product_tesst extends javax.swing.JFrame {
     ArrayList<productDTO> list = new ArrayList<>();
     productBUS productBUS = new productBUS();
     DefaultTableModel model;
     /**
      * Creates new form product
      */
-    public product() {
+    public product_tesst() {
         initComponents();
         model  = (DefaultTableModel) tbl_product.getModel();
         list= productBUS.getList();
@@ -82,13 +83,14 @@ public class product extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
+        id = new javax.swing.JTextField();
+        id2 = new javax.swing.JTextField();
+        id3 = new javax.swing.JTextField();
+        id6 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        tf_search = new javax.swing.JTextField();
-        btn_search = new javax.swing.JButton();
-        btn_sort = new javax.swing.JButton();
-        cb_sort = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_product = new javax.swing.JTable();
         btn_add = new javax.swing.JButton();
@@ -107,33 +109,25 @@ public class product extends javax.swing.JPanel {
         tf_note = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
+        jLabel4.setText("TÊN");
+
+        id.setForeground(new java.awt.Color(153, 153, 153));
+        id.setFocusable(false);
+
+        id2.setForeground(new java.awt.Color(153, 153, 153));
+        id2.setFocusable(false);
+
+        id3.setForeground(new java.awt.Color(153, 153, 153));
+        id3.setFocusable(false);
+
+        id6.setForeground(new java.awt.Color(153, 153, 153));
+        id6.setFocusable(false);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("QUẢN LÝ SẢN PHẨM");
-
-        tf_search.setForeground(new java.awt.Color(153, 153, 153));
-        tf_search.setFocusable(false);
-        tf_search.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_searchActionPerformed(evt);
-            }
-        });
-
-        btn_search.setText("Tìm kiếm");
-        btn_search.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_searchActionPerformed(evt);
-            }
-        });
-
-        btn_sort.setText("Sắp xếp");
-        btn_sort.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_sortActionPerformed(evt);
-            }
-        });
-
-        cb_sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tăng", "Giảm" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -143,29 +137,13 @@ public class product extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cb_sort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn_sort, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(tf_search, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_sort)
-                    .addComponent(tf_search, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_search)
-                    .addComponent(cb_sort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(45, 45, 45))
         );
 
         tbl_product.setModel(new javax.swing.table.DefaultTableModel(
@@ -334,7 +312,7 @@ public class product extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addComponent(btn_add)
                         .addGap(18, 18, 18)
                         .addComponent(btn_edit)
@@ -343,8 +321,8 @@ public class product extends javax.swing.JPanel {
                         .addGap(59, 59, 59))))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -353,15 +331,9 @@ public class product extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tbl_productMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_productMouseClicked
-        // TODO add your handling code here:
-        int select_row = tbl_product.getSelectedRow();
-
-        view_data(list.get(select_row));
-        id1.setFocusable(false);
-    }//GEN-LAST:event_tbl_productMouseClicked
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         // TODO add your handling code here:
@@ -378,9 +350,10 @@ public class product extends javax.swing.JPanel {
             Logger.getLogger(product_tesst.class.getName()).log(Level.SEVERE, null, ex);
             return;
         }
-        JOptionPane.showMessageDialog(null, "Thêm mới thành công!");
-        view_table(list);
-
+            JOptionPane.showMessageDialog(null, "Thêm mới thành công!");
+            view_table(list);
+        
+        
     }//GEN-LAST:event_btn_addActionPerformed
 
     private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
@@ -397,7 +370,7 @@ public class product extends javax.swing.JPanel {
         }
         JOptionPane.showMessageDialog(null, "Cập nhập thành công!");
         view_table( productBUS.getList());
-
+        
     }//GEN-LAST:event_btn_editActionPerformed
 
     private void btn_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_removeActionPerformed
@@ -414,8 +387,16 @@ public class product extends javax.swing.JPanel {
         }
         JOptionPane.showMessageDialog(null, "Xóa thành công!");
         view_table(list);
-
+        
     }//GEN-LAST:event_btn_removeActionPerformed
+
+    private void tbl_productMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_productMouseClicked
+        // TODO add your handling code here:
+        int select_row = tbl_product.getSelectedRow();
+        
+        view_data(list.get(select_row));
+        id.setFocusable(false);
+    }//GEN-LAST:event_tbl_productMouseClicked
 
     private void id1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id1ActionPerformed
         // TODO add your handling code here:
@@ -426,31 +407,56 @@ public class product extends javax.swing.JPanel {
         remove_data();
     }//GEN-LAST:event_btn_resetActionPerformed
 
-    private void tf_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_searchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_searchActionPerformed
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(product_tesst.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(product_tesst.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(product_tesst.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(product_tesst.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
 
-    private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_searchActionPerformed
-
-    private void btn_sortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sortActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_sortActionPerformed
-
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new product_tesst().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_add;
     private javax.swing.JButton btn_edit;
     private javax.swing.JButton btn_remove;
     private javax.swing.JButton btn_reset;
-    private javax.swing.JButton btn_search;
-    private javax.swing.JButton btn_sort;
-    private javax.swing.JComboBox<String> cb_sort;
+    private javax.swing.JTextField id;
     private javax.swing.JTextField id1;
+    private javax.swing.JTextField id2;
+    private javax.swing.JTextField id3;
+    private javax.swing.JTextField id6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -463,6 +469,5 @@ public class product extends javax.swing.JPanel {
     private javax.swing.JTextField quantity;
     private javax.swing.JTable tbl_product;
     private javax.swing.JTextField tf_note;
-    private javax.swing.JTextField tf_search;
     // End of variables declaration//GEN-END:variables
 }
