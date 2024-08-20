@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.ArrayList;
 
 public class importDAO {
-    private Connection conn ;
+    private Connection conn = DBConnect.getConnect();
     public importDAO(){};
 
     // Thêm importDTO

@@ -57,6 +57,7 @@ public class productBUS {
             if (sp.getId().equals(i.getId())){
                 sp.setName(i.getName());
                 sp.setQuantity(i.getQuantity());
+                sp.setCostPrice(i.getCostPrice());
                 sp.setUniPrice(i.getUniPrice());
                 sp.setInformation(i.getInformation());
             }

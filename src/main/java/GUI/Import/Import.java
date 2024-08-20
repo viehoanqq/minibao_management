@@ -5,7 +5,10 @@
 package GUI.Import;
 
 import BUS.importBUS;
+import BUS.import_detailBUS;
+import BUS.productBUS;
 import DTO.importDTO;
+import DTO.import_detailDTO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -19,7 +22,8 @@ import javax.swing.table.DefaultTableModel;
 public class Import extends javax.swing.JPanel {
     ArrayList<importDTO> list = new ArrayList<>();
     importBUS importBUS;
-    DefaultTableModel model;
+    import_detailBUS import_detaillBUS;
+    DefaultTableModel model,detail_model;
     
     /**
      * Creates new form Import
@@ -29,11 +33,12 @@ public class Import extends javax.swing.JPanel {
         importBUS = new importBUS();
         list = importBUS.get_list();
         model = (DefaultTableModel) tbl_import.getModel();
+        detail_model = (DefaultTableModel) tbl_import_detail.getModel();
         view_table_import(list);
                 
     }
     private void view_table_import(ArrayList<importDTO> list){
-        remove_table();
+        remove_table(model);
         for (importDTO i:list){
             add_line(i);
     }
@@ -43,12 +48,32 @@ public class Import extends javax.swing.JPanel {
         i.getImportId(), i.getStaff() , i.getDate(), i.getTotal()
         });
     }
-    private void remove_table(){
+    private void remove_table(DefaultTableModel model){
         int rowCount = model.getRowCount();
         for (int i = rowCount - 1; i >= 0; i--) {
             model.removeRow(i);
         }
     }
+    private void view_table_detail(String id){
+        remove_table(detail_model);
+        ArrayList<import_detailDTO> temp_list  = new ArrayList<>();
+        import_detaillBUS = new import_detailBUS();
+        productBUS pro = new productBUS();
+        try {
+            temp_list = import_detaillBUS.getAllImportDetails();
+        } catch (SQLException ex) {
+            Logger.getLogger(Import.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            int i=0;    
+        for (import_detailDTO dt:temp_list){
+            if (dt.getImportId().equals(id)){
+                detail_model.addRow(new Object[]{
+                ++i, dt.getProductId(),pro.search_id(dt.getProductId()).getName(),dt.getQuantity(),pro.search_id(dt.getProductId()).getCostPrice()
+                });
+            }   
+    }
+    }
+       
     
 
     /**
@@ -71,7 +96,7 @@ public class Import extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_import = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tbl_import_detail = new javax.swing.JTable();
         btn_add = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -145,20 +170,22 @@ public class Import extends javax.swing.JPanel {
                 "Mã Phiếu", "Người nhập", "Ngày nhập", "Tổng tiền "
             }
         ));
+        tbl_import.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_importMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbl_import);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_import_detail.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "STT", "Mã SP", "Tên SP", "Số lượng", "Giá nhập"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tbl_import_detail);
 
         btn_add.setText("Tạo mới");
         btn_add.addActionListener(new java.awt.event.ActionListener() {
@@ -272,6 +299,8 @@ public class Import extends javax.swing.JPanel {
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         // TODO add your handling code here:
+        create_import a = new create_import();
+        a.setVisible(true);
     }//GEN-LAST:event_btn_addActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -309,6 +338,12 @@ public class Import extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void tbl_importMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_importMouseClicked
+        // TODO add your handling code here:
+        int i = tbl_import.getSelectedRow();
+        view_table_detail(String.valueOf(list.get(i).getImportId()));
+    }//GEN-LAST:event_tbl_importMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_add;
@@ -327,7 +362,7 @@ public class Import extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable tbl_import;
+    private javax.swing.JTable tbl_import_detail;
     // End of variables declaration//GEN-END:variables
 }

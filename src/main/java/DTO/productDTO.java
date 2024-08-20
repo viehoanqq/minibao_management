@@ -13,16 +13,17 @@ public class productDTO {
     private String name;
     private String information;
     private int quantity;
-    private int uni_price;
+    private int uni_price,cost_price;
 
     // Default constructor
     public productDTO() {}
 
     // Constructor with parameters
-    public productDTO(String id, String name, int quantity, int uni_price, String information) {
+    public productDTO(String id, String name, int quantity,int cost_price, int uni_price, String information) {
         this.id = id;
         this.name = name;
         this.information = information;
+        this.cost_price = cost_price;
         this.quantity = quantity;
         this.uni_price = uni_price;
     }
@@ -43,7 +44,9 @@ public class productDTO {
     public int getQuantity() {
         return quantity;
     }
-
+    public int getCostPrice(){
+        return cost_price;
+    }
     public int getUniPrice() {
         return uni_price;
     }
@@ -63,6 +66,10 @@ public class productDTO {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+        
+    }
+    public void setCostPrice(int cost_price){
+        this.cost_price = cost_price;
     }
 
     public void setUniPrice(int uni_price) {

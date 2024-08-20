@@ -31,9 +31,10 @@ public class productDAO {
                 String name = rs.getString("name");
                 int quantity = rs.getInt("quantity");
                 int uni_price = rs.getInt("uni_price");
+                int cost_price = rs.getInt("cost_price");
                 String infor = rs.getString("information");
                 
-                productDTO product = new productDTO(product_id, name, quantity,  uni_price,infor);
+                productDTO product = new productDTO(product_id, name, quantity,cost_price,  uni_price,infor);
                 productlist.add(product); 
 
             }
@@ -45,14 +46,15 @@ public class productDAO {
  
      public void add(productDTO sp) throws SQLException {
               Connection connection = DBConnect.getConnect();
-              String sql = "INSERT INTO product (product_id, name, quantity, uni_price, information) VALUES (?, ?, ?, ?, ?)";
+              String sql = "INSERT INTO product (product_id, name, quantity,cost_price, uni_price, information) VALUES (?, ?, ?, ?, ?, ?)";
               PreparedStatement pst = connection.prepareStatement(sql);
 
               pst.setString(1, sp.getId());
               pst.setString(2, sp.getName());
               pst.setInt(3, sp.getQuantity());
-              pst.setInt(4, sp.getUniPrice());
-              pst.setString(5, sp.getInformation());
+              pst.setInt(4, sp.getCostPrice());
+              pst.setInt(5, sp.getUniPrice());
+              pst.setString(6, sp.getInformation());
 
               pst.executeUpdate();
 
@@ -61,12 +63,13 @@ public class productDAO {
      public void update(productDTO sp) {
     try {
         Connection connection = DBConnect.getConnect();
-        PreparedStatement pst = connection.prepareStatement("UPDATE product SET name=?, quantity=?, uni_price=?, information=? WHERE product_id=?");
+        PreparedStatement pst = connection.prepareStatement("UPDATE product SET name=?, quantity=?, cost_price=? , uni_price=?, information=? WHERE product_id=?");
         pst.setString(1, sp.getName());
         pst.setInt(2, sp.getQuantity());
-        pst.setInt(3, sp.getUniPrice());
-        pst.setString(4, sp.getInformation());
-        pst.setString(5, sp.getId());
+        pst.setInt(3,sp.getCostPrice());
+        pst.setInt(4, sp.getUniPrice());
+        pst.setString(5, sp.getInformation());
+        pst.setString(6, sp.getId());
         pst.executeUpdate();
         System.out.println("Update thành công");
         pst.close();
