@@ -159,8 +159,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="product_panel" max="32767" attributes="0"/>
                           <Component id="panel_import" alignment="1" max="32767" attributes="0"/>
-                          <Component id="pannelSP2" alignment="1" max="32767" attributes="0"/>
-                          <Component id="pannelSP3" alignment="1" max="32767" attributes="0"/>
+                          <Component id="lbl_sell" alignment="1" max="32767" attributes="0"/>
+                          <Component id="panel_recept" alignment="1" max="32767" attributes="0"/>
                           <Component id="kho_panel" alignment="1" max="32767" attributes="0"/>
                           <Component id="static_panel" alignment="1" max="32767" attributes="0"/>
                       </Group>
@@ -176,9 +176,9 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="panel_import" max="32767" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="pannelSP2" max="32767" attributes="0"/>
+                      <Component id="lbl_sell" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pannelSP3" max="32767" attributes="0"/>
+                      <Component id="panel_recept" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="kho_panel" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -268,15 +268,15 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="pannelSP2">
+            <Container class="javax.swing.JPanel" name="lbl_sell">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pannelSP2MouseClicked"/>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pannelSP2MouseEntered"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbl_sellMouseClicked"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbl_sellMouseEntered"/>
               </Events>
 
               <Layout>
@@ -284,18 +284,18 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="52" max="32767" attributes="0"/>
-                          <Component id="sell_panel" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="panel_sell" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="sell_panel" alignment="0" pref="54" max="32767" attributes="0"/>
+                      <Component id="panel_sell" alignment="0" pref="54" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="sell_panel">
+                <Component class="javax.swing.JLabel" name="panel_sell">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="15" style="1"/>
@@ -308,15 +308,15 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="pannelSP3">
+            <Container class="javax.swing.JPanel" name="panel_recept">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pannelSP3MouseClicked"/>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pannelSP3MouseEntered"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panel_receptMouseClicked"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panel_receptMouseEntered"/>
               </Events>
 
               <Layout>
@@ -324,18 +324,18 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="52" max="32767" attributes="0"/>
-                          <Component id="recept_panel" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="lbl_recept" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="recept_panel" alignment="0" pref="54" max="32767" attributes="0"/>
+                      <Component id="lbl_recept" alignment="0" pref="54" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="recept_panel">
+                <Component class="javax.swing.JLabel" name="lbl_recept">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="15" style="1"/>

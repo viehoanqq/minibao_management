@@ -402,7 +402,7 @@ public class product extends javax.swing.JPanel {
             list.add(temp);
             productBUS.add(temp);
         } catch (SQLException ex) {
-            Logger.getLogger(product_tesst.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(product.class.getName()).log(Level.SEVERE, null, ex);
             return;
         }
         JOptionPane.showMessageDialog(null, "Thêm mới thành công!");
@@ -418,7 +418,7 @@ public class product extends javax.swing.JPanel {
             productBUS.update_product(temp);
             productBUS.update(temp);
         } catch (SQLException ex) {
-            Logger.getLogger(product_tesst.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(product.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Lỗi cập nhập!");
             return;
         }
@@ -435,7 +435,7 @@ public class product extends javax.swing.JPanel {
             list.remove(temp);
             productBUS.delete(temp);
         } catch (SQLException ex) {
-            Logger.getLogger(product_tesst.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(product.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Lỗi!");
             return;
         }

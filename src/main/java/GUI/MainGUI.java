@@ -3,8 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
+import BUS.receptBUS;
 import GUI.product.product;
 import GUI.Import.Import;
+import GUI.recept.recept;
+import GUI.SELL.sell;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,13 +20,15 @@ public class MainGUI extends javax.swing.JFrame {
     //
     product product_gui;
     Import import_gui;
+    recept recept_gui;
+    sell sell_gui;
     /**
      * Creates new form MainGUI
      */
     public MainGUI() {
         initComponents();
     }
-    private void open_gui(int  i){
+    private void open_gui(int  i) throws SQLException{
         switch (i){
             case 1: 
             {
@@ -42,16 +47,46 @@ public class MainGUI extends javax.swing.JFrame {
                 jmain.add(import_gui);
                 jmain.updateUI();
                 change_color(2);
+            } break;
+            case 3:
+            {   
+                recept_gui = new recept();
+                jmain.removeAll();
+                recept_gui.setSize(950,650);
+                jmain.add(recept_gui);
+                jmain.updateUI();
+                change_color(3);
+                
+            } break;
+            case 4:
+            {   
+                receptBUS test = new receptBUS();
+                if (!test.check_date())
+                sell_gui = new sell();
+                else sell_gui= new sell(test.get_last_recept(),test.get_last_recept().getReceptId());
+                jmain.removeAll();
+                sell_gui.setSize(950,650);
+                jmain.add(sell_gui);
+                jmain.updateUI();
+                change_color(4);
+                
             }
             
     }
     }
     private void change_color(int i){
          product_panel.setBackground(new java.awt.Color(255, 255, 255));
+         lb_product.setForeground(new java.awt.Color(0, 0, 0));         
+         
+         lb_import.setForeground(new java.awt.Color(0, 0, 0));
          panel_import.setBackground(new java.awt.Color(255,255,255));
          
-         lb_product.setForeground(new java.awt.Color(0, 0, 0));
-         lb_import.setForeground(new java.awt.Color(0, 0, 0));
+         lbl_recept.setBackground(new java.awt.Color(255, 255, 255));
+         panel_recept.setForeground(new java.awt.Color(0, 0, 0)); 
+         
+         lbl_sell.setBackground(new java.awt.Color(255, 255, 255));
+         panel_sell.setForeground(new java.awt.Color(0, 0, 0)); 
+         
          switch(i){
              case 1:
                     product_panel.setBackground(new java.awt.Color(0, 51, 204));
@@ -60,6 +95,14 @@ public class MainGUI extends javax.swing.JFrame {
              case 2:
                  panel_import.setBackground(new java.awt.Color(0, 51, 204));
                  lb_import.setForeground(new java.awt.Color(255, 255, 255));
+                 break;
+             case 3:
+                 panel_recept.setBackground(new java.awt.Color(0, 51, 204));
+                 lbl_recept.setForeground(new java.awt.Color(255, 255, 255));
+             case 4:
+                 lbl_sell.setBackground(new java.awt.Color(0, 51, 204));
+                 panel_sell.setForeground(new java.awt.Color(255, 255, 255));
+                 
     }}
 
     /**
@@ -81,10 +124,10 @@ public class MainGUI extends javax.swing.JFrame {
         lb_product = new javax.swing.JLabel();
         panel_import = new javax.swing.JPanel();
         lb_import = new javax.swing.JLabel();
-        pannelSP2 = new javax.swing.JPanel();
-        sell_panel = new javax.swing.JLabel();
-        pannelSP3 = new javax.swing.JPanel();
-        recept_panel = new javax.swing.JLabel();
+        lbl_sell = new javax.swing.JPanel();
+        panel_sell = new javax.swing.JLabel();
+        panel_recept = new javax.swing.JPanel();
+        lbl_recept = new javax.swing.JLabel();
         kho_panel = new javax.swing.JPanel();
         lblSanpham4 = new javax.swing.JLabel();
         static_panel = new javax.swing.JPanel();
@@ -194,58 +237,58 @@ public class MainGUI extends javax.swing.JFrame {
             .addComponent(lb_import, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
         );
 
-        pannelSP2.setBackground(new java.awt.Color(255, 255, 255));
-        pannelSP2.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbl_sell.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_sell.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pannelSP2MouseClicked(evt);
+                lbl_sellMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pannelSP2MouseEntered(evt);
+                lbl_sellMouseEntered(evt);
             }
         });
 
-        sell_panel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        sell_panel.setText("Bán hàng");
-        sell_panel.setPreferredSize(new java.awt.Dimension(50, 20));
+        panel_sell.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        panel_sell.setText("Bán hàng");
+        panel_sell.setPreferredSize(new java.awt.Dimension(50, 20));
 
-        javax.swing.GroupLayout pannelSP2Layout = new javax.swing.GroupLayout(pannelSP2);
-        pannelSP2.setLayout(pannelSP2Layout);
-        pannelSP2Layout.setHorizontalGroup(
-            pannelSP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pannelSP2Layout.createSequentialGroup()
+        javax.swing.GroupLayout lbl_sellLayout = new javax.swing.GroupLayout(lbl_sell);
+        lbl_sell.setLayout(lbl_sellLayout);
+        lbl_sellLayout.setHorizontalGroup(
+            lbl_sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lbl_sellLayout.createSequentialGroup()
                 .addGap(0, 52, Short.MAX_VALUE)
-                .addComponent(sell_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panel_sell, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        pannelSP2Layout.setVerticalGroup(
-            pannelSP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sell_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+        lbl_sellLayout.setVerticalGroup(
+            lbl_sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panel_sell, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
         );
 
-        pannelSP3.setBackground(new java.awt.Color(255, 255, 255));
-        pannelSP3.addMouseListener(new java.awt.event.MouseAdapter() {
+        panel_recept.setBackground(new java.awt.Color(255, 255, 255));
+        panel_recept.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pannelSP3MouseClicked(evt);
+                panel_receptMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pannelSP3MouseEntered(evt);
+                panel_receptMouseEntered(evt);
             }
         });
 
-        recept_panel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        recept_panel.setText("Hóa đơn");
-        recept_panel.setPreferredSize(new java.awt.Dimension(50, 20));
+        lbl_recept.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        lbl_recept.setText("Hóa đơn");
+        lbl_recept.setPreferredSize(new java.awt.Dimension(50, 20));
 
-        javax.swing.GroupLayout pannelSP3Layout = new javax.swing.GroupLayout(pannelSP3);
-        pannelSP3.setLayout(pannelSP3Layout);
-        pannelSP3Layout.setHorizontalGroup(
-            pannelSP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pannelSP3Layout.createSequentialGroup()
+        javax.swing.GroupLayout panel_receptLayout = new javax.swing.GroupLayout(panel_recept);
+        panel_recept.setLayout(panel_receptLayout);
+        panel_receptLayout.setHorizontalGroup(
+            panel_receptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_receptLayout.createSequentialGroup()
                 .addGap(0, 52, Short.MAX_VALUE)
-                .addComponent(recept_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lbl_recept, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        pannelSP3Layout.setVerticalGroup(
-            pannelSP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(recept_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+        panel_receptLayout.setVerticalGroup(
+            panel_receptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbl_recept, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
         );
 
         kho_panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -311,8 +354,8 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(product_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panel_import, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pannelSP2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pannelSP3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_sell, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panel_recept, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(kho_panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(static_panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -325,9 +368,9 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(panel_import, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(pannelSP2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_sell, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pannelSP3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panel_recept, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(kho_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -371,33 +414,51 @@ public class MainGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void product_panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_product_panelMouseClicked
+        try {
             open_gui(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_product_panelMouseClicked
 
     private void panel_importMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_importMouseClicked
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
             open_gui(2);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_panel_importMouseClicked
 
     private void panel_importMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_importMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_panel_importMouseEntered
 
-    private void pannelSP2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pannelSP2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pannelSP2MouseClicked
+    private void lbl_sellMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_sellMouseClicked
+        try {
+            // TODO add your handling code here:
+            open_gui(4);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_lbl_sellMouseClicked
 
-    private void pannelSP2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pannelSP2MouseEntered
+    private void lbl_sellMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_sellMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_pannelSP2MouseEntered
+    }//GEN-LAST:event_lbl_sellMouseEntered
 
-    private void pannelSP3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pannelSP3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pannelSP3MouseClicked
+    private void panel_receptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_receptMouseClicked
+        try {
+            // TODO add your handling code here:
+            open_gui(3);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_panel_receptMouseClicked
 
-    private void pannelSP3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pannelSP3MouseEntered
+    private void panel_receptMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_receptMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_pannelSP3MouseEntered
+    }//GEN-LAST:event_panel_receptMouseEntered
 
     private void kho_panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kho_panelMouseClicked
         // TODO add your handling code here:
@@ -462,12 +523,12 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lb_product;
     private javax.swing.JLabel lblSanpham4;
     private javax.swing.JLabel lblSanpham5;
+    private javax.swing.JLabel lbl_recept;
+    private javax.swing.JPanel lbl_sell;
     private javax.swing.JPanel panel_import;
-    private javax.swing.JPanel pannelSP2;
-    private javax.swing.JPanel pannelSP3;
+    private javax.swing.JPanel panel_recept;
+    private javax.swing.JLabel panel_sell;
     private javax.swing.JPanel product_panel;
-    private javax.swing.JLabel recept_panel;
-    private javax.swing.JLabel sell_panel;
     private javax.swing.JPanel static_panel;
     // End of variables declaration//GEN-END:variables
 }
